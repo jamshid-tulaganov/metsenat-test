@@ -3,7 +3,7 @@ defineOptions({
     inheritAttrs: false
 });
 
-const props = withDefaults(
+withDefaults(
     defineProps<{
         modelValue: number | string | undefined;
         inputType?: string;

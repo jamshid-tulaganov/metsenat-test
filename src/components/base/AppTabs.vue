@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { reactive } from "vue";
 import { TabsItem } from '../../types/components/tabs.types';
 import { useDashboardStore } from '../../store/dashboard';
 
