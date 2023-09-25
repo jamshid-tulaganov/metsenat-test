@@ -1,14 +1,34 @@
 <script setup lang="ts">
 import AppTabs from '../../components/base/AppTabs.vue';
+import { reactive } from 'vue';
+import { TabsItem } from '../../types/components/tabs.types';
 
-const search = ""
+const search = "";
+const tabGroups = reactive<TabsItem[]>([{
+    id: 1,
+    tittle: "Dashboard",
+    active: false
+},
+{
+    id: 2,
+    tittle: "Homiylar",
+    active: true
+},
+{
+    id: 3,
+    tittle: "Talabalar",
+    active: false
+    }]);
+
 </script>
 
 <template>
     <header class="mt-[64px] bg-white py-6">
         <div class="container mx-auto flex items-center">
             <!-- tabs -->
-            <AppTabs></AppTabs>
+            <AppTabs
+                :options="tabGroups"
+            ></AppTabs>
 
             <div class="flex items-center ml-auto">
                 <!-- searching -->
