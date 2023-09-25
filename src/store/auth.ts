@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { UserLogin } from '../types/models/auth.model';
 import { instance } from '../plugins/axios';
-import { useTokenize } from '../components/composables/tokenize';
+import { useTokenize } from '../composables/tokenize';
 
 interface UserResponse {
     refresh: string,

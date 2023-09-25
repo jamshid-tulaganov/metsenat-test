@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import Loader from "../../components/Loader.vue"
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, maxLength } from '@vuelidate/validators'
 import { useAuthStore } from "../../store/auth";
 import { sweetToastSuccess } from '../../plugins/swal';
 import { useRouter } from 'vue-router';
+import { useLoading } from '../../composables/loading';
 
-// auth store
+
 const authStore = useAuthStore();
-
-// router
 const router = useRouter();
+const { startLoading, isLoading } = useLoading();
 
 // validation
 const rules = {
@@ -22,7 +23,7 @@ const v$ = useVuelidate(rules, authStore.user);
 
 // submit
 
-async function submit() {
+function submit() {
     v$.value.$touch();
 
     // check validation
@@ -30,13 +31,15 @@ async function submit() {
         return false;
     }
 
-    try {
-        await authStore.login();
-        sweetToastSuccess("Successfully login");
-        router.push({path: "/"})
-    } catch (e) {
-        console.log(e)
-    }
+    startLoading(async () => {
+        try {
+            await authStore.login();
+            sweetToastSuccess("Successfully login");
+            router.push({ path: "/" })
+        } catch (error) {
+            console.log(error)
+        }
+    });
 }
 </script>
 
@@ -75,7 +78,10 @@ async function submit() {
             <!-- captcha -->
 
             <!-- button -->
-            <AppButton @click="submit">Kirish</AppButton>
+            <AppButton type="" @click="submit">
+                <Loader v-if="isLoading" />
+                <span v-else>Kirish</span>
+            </AppButton>
         </form>
     </section>
 </template>
