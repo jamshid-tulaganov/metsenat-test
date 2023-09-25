@@ -5,8 +5,8 @@ import "./style/main.css";
 import router from "./router/index"
 
 // global components
-import AppInput from "./components/ui/AppInput.vue";
-import AppButton from './components/ui/AppButton.vue';
+import AppInput from "./components/base/AppInput.vue";
+import AppButton from './components/base/AppButton.vue';
 
 createApp(App)
     .use(router)

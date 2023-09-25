@@ -3,7 +3,7 @@
 
 
 <template>
-    <header class="bg-white shadow-sm">
+    <header class="w-full fixed top-0 bg-white shadow-sm">
         <div class="container flex items-center mx-auto py-3">
             <img src="/assets/images/logos/logo-pro.svg" alt="Logo METSENAT" class="cursor-pointer">
 
