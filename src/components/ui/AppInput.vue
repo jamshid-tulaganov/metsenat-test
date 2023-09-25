@@ -22,7 +22,7 @@ const emit = defineEmits<{
 
 <template>
     <div class="flex flex-col">
-        <label class="inline-block mb-2 text-sm text-secondary leading-[14.22px] font-bold tracking-[1.13px]" for="input"> {{ label }}</label>
+        <label class="inline-block mb-2 text-xs text-secondary leading-[14.22px] font-bold tracking-[1.13px]" for="input"> {{ label }}</label>
 
         <input 
             @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
