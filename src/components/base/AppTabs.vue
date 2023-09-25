@@ -1,29 +1,20 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import { TabsItem } from '../../types/components/tabs.types';
+import { useDashboardStore } from '../../store/dashboard';
 
-let options = reactive([
-    {
-        id: 1,
-        title: "Dashboard",
-        active: false
-    },
-    {
-        id: 2,
-        title: "Homiylar",
-        active: true
-    },
-    {
-        id: 3,
-        title: "Talabalar",
-        active: false
-    }
-])
 
+const props = defineProps<{
+    options: TabsItem[]
+}>();
+
+const dashboardStore = useDashboardStore();
 
 const change = (id: number) => {
-    options.map(option => {
+    props.options.map(option => {
         if (option.id == id) {
             option.active = true;
+            dashboardStore.currentTab = option;
         } else {
             option.active = false;   
         }
@@ -39,7 +30,7 @@ const change = (id: number) => {
                 :class="{'text-white bg-primary': option.active}"
                 @click="change(option.id)"
             >
-                <a href="#" class="text-xs leading-3 font-medium text-center uppercase"> {{ option.title }}</a>
+                <a href="#" class="text-xs leading-3 font-medium text-center uppercase"> {{ option.tittle }}</a>
             </li>
         </ul>
     </section>
