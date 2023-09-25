@@ -33,7 +33,8 @@ export default {
         "blue-700": "#3365FC",
         "blue-800": "#2E5BFF",
         "green": "#00CF83",
-        "orange": "#FFA445"
+        "orange": "#FFA445",
+        "error": "#dc3545"
       },
 
       boxShadow: {
