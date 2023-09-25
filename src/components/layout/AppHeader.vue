@@ -1,4 +1,17 @@
 <script setup lang="ts">
+import { useAuthStore } from '../../store/auth';
+import { sweetToastSuccess } from '../../plugins/swal';
+import router from '../../router/index';
+
+const authStore = useAuthStore();
+
+// logout
+
+const logoutUser = () => {
+    authStore.logout();
+    sweetToastSuccess("Logout successfully");
+    router.push({name: "login"})
+}
 </script>
 
 
@@ -10,13 +23,14 @@
             <nav class="flex items-center ml-auto">
                 <!-- user profile -->
                 <div class="flex items-center mr-11 py-1 pr-1 pl-5 bg-[#F1F1F3] rounded-md">
-                    <p class="mr-6 font-sf-pro-text text-sm leading-[19.5px] font-bold -tracking-[0.35px]">Shohruh</p>
+                    <p class="mr-6 font-sf-pro-text text-sm leading-[19.5px] font-bold -tracking-[0.35px]">{{ authStore.user.username }}</p>
                     <div class="w-8 h-8 flex items-end justify-center rounded-[4px] bg-[#00AE69]">
                         <img src="/assets/images/icons/user.svg" alt="User icon">
                     </div>
                 </div>
                 <!-- logout -->
-                <img src="/assets/images/icons/log-out.svg" alt="log out icon" class="p-1 cursor-pointer hover:bg-gray-100 rounded-full">
+                <img src="/assets/images/icons/log-out.svg" alt="log out icon" 
+                    class="p-1 cursor-pointer hover:bg-gray-100 rounded-full" @click="logoutUser" />
             </nav>
         </div>
     </header>

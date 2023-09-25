@@ -12,15 +12,15 @@ export const instance: AxiosInstance = axios.create({
 
 const handleSuccessResponse = (response: any) => {
     if (response.data.message) {
-        sweetToastSuccess(response.data.message);
+        sweetToastSuccess(response.data.detail);
     }
 
     return response;
 };
 
 const handleErrorResponse = (error: any) => {
-    if (error.response.data.message) {
-        sweetToastError(error.response.data.message);
+    if (error.response.data.detail) {
+        sweetToastError(error.response.data.detail);
     }
 
     return Promise.reject(error.response.data.errors);

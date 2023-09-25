@@ -1,7 +1,43 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useVuelidate } from '@vuelidate/core'
+import { required, minLength, maxLength } from '@vuelidate/validators'
+import { useAuthStore } from "../../store/auth";
+import { sweetToastSuccess } from '../../plugins/swal';
+import { useRouter } from 'vue-router';
 
-const email = ref("");
+// auth store
+const authStore = useAuthStore();
+
+// router
+const router = useRouter();
+
+// validation
+const rules = {
+    username: { required, minLength: minLength(4), maxLength: maxLength(255) },
+    password: { required, minLength: minLength(4), maxLength: maxLength(255) }
+};
+
+const v$ = useVuelidate(rules, authStore.user);
+
+
+// submit
+
+async function submit() {
+    v$.value.$touch();
+
+    // check validation
+    if (v$.value.$invalid) {
+        return false;
+    }
+
+    try {
+        await authStore.login();
+        sweetToastSuccess("Successfully login");
+        router.push({path: "/"})
+    } catch (e) {
+        console.log(e)
+    }
+}
 </script>
 
 
@@ -13,25 +49,33 @@ const email = ref("");
             <h1 class="font-sf-pro-display text-[#28293D] text-2xl font-bold leading-7 mb-11">Kirish</h1>
             <!-- inputs -->
             <AppInput
-                v-model="email"
+                v-model="authStore.user.username"
                 label="LOGIN"
                 placeholder="Username kiriting"
                 class="mb-[22px]"
+                :validation-error="{
+                    error: v$.username.$error,
+                    message: v$.username.$errors,
+                }"
             >
             </AppInput>
 
             <AppInput
-                v-model="email"
+                v-model="authStore.user.password"
                 input-type="password"
                 label="PAROL"
                 placeholder="Parol kiriting"
                 class="mb-[22px]"
+                :validation-error="{
+                    error: v$.password.$error,
+                    message: v$.password.$errors,
+                }"
             >
             </AppInput>
             <!-- captcha -->
 
             <!-- button -->
-            <AppButton>Kirish</AppButton>
+            <AppButton @click="submit">Kirish</AppButton>
         </form>
     </section>
 </template>
