@@ -9,6 +9,12 @@ export default {
         "sf-pro-display": ["SF Pro Display", "sans-serif"]
       },
 
+      fontSize: {
+        xs: "12px",
+        sm: "14px",
+        base: "15px",
+      },
+
       colors: {
         primary: "#3366FF",
         secondary: "#1D1D1F",
