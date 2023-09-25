@@ -42,15 +42,14 @@ export default {
 
     container: {
       screens: {
-        lg: "1200px"
+        lg: "1248px"
       },
 
       padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+        DEFAULT: "12px",
+        sm: "16px",
+        md: "20px",
+        lg: '24px',
       },
     }
   },
