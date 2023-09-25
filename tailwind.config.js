@@ -33,8 +33,26 @@ export default {
         "blue-800": "#2E5BFF",
         "green": "#00CF83",
         "orange": "#FFA445"
+      },
+
+      boxShadow: {
+        sm: "0px 25px 40px 0px #00000008"
       }
     },
+
+    container: {
+      screens: {
+        lg: "1200px"
+      },
+
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    }
   },
   plugins: [],
 }
