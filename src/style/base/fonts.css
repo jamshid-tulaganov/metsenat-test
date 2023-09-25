@@ -1,0 +1,30 @@
+/* font family Rubik */
+
+@font-face {
+    font-family: "Rubik";
+    src: url("/assets/fonts//rubik/Rubik.woff") format("woff"),
+        url("/assets/fonts/rubik/Rubik.woff2") format("woff2");
+    font-style: normal;
+}
+
+
+
+/* font family SF Pro Text */
+@font-face {
+    font-family: "SF Pro Text";
+    src: url("/assets/fonts/sf-pro-text/SF-Pro-Text-Regular.otf") format("otf"),
+        url("/assets/fonts/sf-pro-text/sf-pro-text-regular.ttf") format("ttf"),
+        url("/assets/fonts/sf-pro-text/sf-pro-text-regular.woff") format("woff");
+    font-style: normal;
+}
+
+
+/* font family SF Pro Display */
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("/assets/fonts/sf-pro-display/SF-Pro-Display-Regular.otf") format("otf"),
+        url("/assets/fonts/sf-pro-display/SF-Pro-Display-Regular.eot") format("eot"),
+        url("/assets/fonts/sf-pro-display/SF-Pro-Display-Regular.ttf") format("ttf"),
+        url("/assets/fonts/sf-pro-display/SF-Pro-Display-Regular.woff") format("woff");
+    font-style: normal;
+}
