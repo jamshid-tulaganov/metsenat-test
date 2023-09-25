@@ -30,6 +30,7 @@ export default {
         "blue-300": "#5BABF2",
         "blue-500": "#3366FF99",
         "blue-700": "#3365FC",
+        "blue-800": "#2E5BFF",
         "green": "#00CF83",
         "orange": "#FFA445"
       }
