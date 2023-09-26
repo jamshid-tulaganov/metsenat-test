@@ -7,12 +7,12 @@ const search = "";
 const tabGroups = reactive<TabsItem[]>([{
     id: 1,
     tittle: "Dashboard",
-    active: false
+    active: true
 },
 {
     id: 2,
     tittle: "Homiylar",
-    active: true
+    active: false
 },
 {
     id: 3,

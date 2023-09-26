@@ -14,15 +14,20 @@ const pages = reactive([
 ]);
 
 const next = () => {
+    if (typeof pages[0].value === "number") {
+        dashboardStore.currentPage = pages[0].value
+    }
+
+    if (typeof pages[4].value === "number" && dashboardStore.currentPageSize * pages[4].value > dashboardStore.count) {
+        return false;
+    }
     pages.map(el => {
         if (typeof el.value === "number") {
             el.value++;
         }
     });
 
-    if (typeof pages[0].value === "number") {
-        dashboardStore.currentPage = pages[0].value
-    }
+    
 
 };
 

@@ -78,8 +78,8 @@ function submit() {
             <!-- captcha -->
 
             <!-- button -->
-            <AppButton type="" @click="submit">
-                <Loader v-if="isLoading" />
+            <AppButton type="button" @click="submit">
+                <Loader width="22px" height="22px" v-if="isLoading" />
                 <span v-else>Kirish</span>
             </AppButton>
         </form>
