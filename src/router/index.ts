@@ -32,16 +32,12 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to) => {
+router.beforeEach((to, _, next) => {
     const authStore = useAuthStore();
 
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        // this route requires auth, check if logged in
-        // if not, redirect to login page.
-        if (!authStore.isAuthenticated) {
-            return { name: 'login' }
-        }
-    }
+    if (to.name !== 'Login' && !authStore.isAuthenticated) next({ name: 'Login' });
+
+    else next();
 });
 
 export default router;

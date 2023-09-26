@@ -17,7 +17,8 @@ export const useDashboardStore = defineStore("dashboard", {
             count: 0,
             currentPage: 1,
             currentPageSize: 10,
-            sponsorsList: [] as SponsorLists[]
+            sponsorsList: [] as SponsorLists[],
+            isLoading: false
         }
     },
 

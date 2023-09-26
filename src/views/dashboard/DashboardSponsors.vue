@@ -3,12 +3,11 @@ import UserListsCard from '../../components/UserListsCard.vue';
 import UserListsHeader from '../../components/UserListsHeader.vue';
 import Loader from '../../components/Loader.vue';
 import { useDashboardStore } from '../../store/dashboard';
-import { useLoading } from '../../composables/loading';
 import AppSelect from '../../components/base/AppSelect.vue';
+import Pagination from "../../components/Pagination.vue"
 import { watch } from "vue";
 
 const dashboardStore = useDashboardStore();
-const { startLoading, isLoading } = useLoading();
 
 const headers = [
     { id: 1, text: "#" },
@@ -22,10 +21,10 @@ const headers = [
 
 ];
 
-const load = () => {
-    startLoading(async () => {
-        await dashboardStore.getSponsorsList();
-    })
+const load = async () => {
+    dashboardStore.isLoading = true;
+    dashboardStore.getSponsorsList()
+        .finally(() => dashboardStore.isLoading = false);
 }
 load();
 
@@ -47,7 +46,7 @@ watch(
             class="mb-3"
         />
         
-        <Loader v-if="isLoading" />
+        <Loader v-if="dashboardStore.isLoading" />
         <!-- lists cards -->
         <UserListsCard
             v-else
@@ -64,7 +63,10 @@ watch(
                 {{ dashboardStore.count + " ta dan 1-" + dashboardStore.currentPageSize + " ko'rsatilmoqda" }}
             </p>
 
-            <AppSelect v-model="dashboardStore.currentPageSize" class="ml-auto"></AppSelect>
+            <AppSelect v-model="dashboardStore.currentPageSize" class="ml-auto mr-5"></AppSelect>
+
+            <!-- pagination -->
+            <Pagination></Pagination>
         </div>
     </section>
 </template>

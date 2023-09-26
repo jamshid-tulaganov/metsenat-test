@@ -18,6 +18,15 @@ export const useAuthStore = defineStore("auth", {
     },
 
     actions: {
+        async check() {
+            const { get } = useTokenize();
+
+            if (get()) {
+                instance.defaults.headers.common["Authorization"] = "Bearer " + get();
+                this.isAuthenticated = true;
+            }
+        },
+
         async login() {
             const response = await instance.post<UserResponse>('/auth/login/', this.user);
 
@@ -37,6 +46,8 @@ export const useAuthStore = defineStore("auth", {
             const { remove } = useTokenize();
             remove();
             this.isAuthenticated = false;
-        }
+        },
+
+
     }
 })

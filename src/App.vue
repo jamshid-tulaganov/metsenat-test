@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { useAuthStore } from './store/auth';
 
+const { check } = useAuthStore();
+
+check();
 </script>
 
 <template>
