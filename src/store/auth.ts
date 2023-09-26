@@ -22,7 +22,6 @@ export const useAuthStore = defineStore("auth", {
             const { get } = useTokenize();
 
             if (get()) {
-                instance.defaults.headers.common["Authorization"] = "Bearer " + get();
                 this.isAuthenticated = true;
             }
         },
@@ -31,16 +30,14 @@ export const useAuthStore = defineStore("auth", {
             const response = await instance.post<UserResponse>('/auth/login/', this.user);
 
             if (response.data.access) {
-                // set token
-                const { set } = useTokenize();
+                const { get, set } = useTokenize();
                 set(response.data.access);
 
+                instance.defaults.headers.common["Authorization"] = "Bearer " + get();
                 this.isAuthenticated = true;
                 this.refreshToken = response.data.refresh;
-
             }
         },
-
 
         logout() {
             const { remove } = useTokenize();

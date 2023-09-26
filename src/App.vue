@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { useAuthStore } from './store/auth';
+import { useRouter } from 'vue-router';
 
-const { check } = useAuthStore();
+const { check, isAuthenticated } = useAuthStore();
+const router = useRouter();
+
+if (!isAuthenticated) {
+    router.push({name: 'login'})
+}
 
 check();
 </script>
