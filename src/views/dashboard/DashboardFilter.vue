@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import CardSelection from '../../components/CardSelection.vue';
 import Modal from '../../components/Modal.vue';
 import { ref } from 'vue';
 const show = ref(false);
+const date = ref("");
 
 const close = () => show.value = false;
 const open = () => show.value = true;
@@ -14,13 +16,22 @@ defineExpose({
 <template>
     <Modal title="Filter" v-model:model-value="show" @close="close">
         <template #body>
-            <hr class="w-full h-[2px] bg-[#F5F5F7]">
+            <hr class="w-full h-[2px] bg-[#F5F5F7] my-7">
 
             <!-- app dropdown -->
 
             <!-- app card select -->
 
+            <CardSelection class="mb-7" />
+
             <!-- app date -->
+            <AppInput
+                v-model="date"
+                type="date"
+                label="SANA"
+                placeholder="kk.oo.yyyy - kk.oo.yyyy"
+                class="mb-7"
+            ></AppInput>
 
             <hr class="w-full h-[2px] bg-[#F5F5F7]">
 
