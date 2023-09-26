@@ -54,7 +54,7 @@ defineExpose({
             <!-- button -->
 
             <div class="flex justify-end pt-7">
-                <AppButton intent="outline" class="w-[149px] h-[42px] mr-4">
+                <AppButton intent="outline" class="w-[149px] h-[42px] mr-4" @click="close">
                     <img src="/assets/images/icons/clear.svg" alt="Eye Icons">
                     <span class="inline-block ml-3">Tozalash</span>
                 </AppButton>
