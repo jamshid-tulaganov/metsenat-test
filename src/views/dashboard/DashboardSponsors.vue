@@ -46,7 +46,10 @@ watch(
             class="mb-3"
         />
         
-        <Loader v-if="dashboardStore.isLoading" width="50" height="50"  />
+        <div v-if="dashboardStore.isLoading" class="w-full h-[400px] flex items-center justify-center">
+            <Loader  width="50" height="50"  />
+        </div>
+        
         <!-- lists cards -->
         <UserListsCard
             v-else

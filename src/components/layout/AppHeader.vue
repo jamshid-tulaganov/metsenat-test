@@ -9,6 +9,11 @@ const authStore = useAuthStore();
 
 const logoutUser = () => {
     authStore.logout();
+    // remove user store
+    authStore.user = {
+        username: "",
+        password: ""
+    };
     sweetToastSuccess("Logout successfully");
     router.push({name: "login"})
 }
