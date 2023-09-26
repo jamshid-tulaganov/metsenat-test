@@ -79,7 +79,7 @@ function submit() {
 
             <!-- button -->
             <AppButton type="button" @click="submit">
-                <Loader width="22px" height="22px" v-if="isLoading" />
+                <Loader width="22" height="22" v-if="isLoading" />
                 <span v-else>Kirish</span>
             </AppButton>
         </form>
