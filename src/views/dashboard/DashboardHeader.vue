@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import AppTabs from '../../components/base/AppTabs.vue';
 import { reactive, ref } from 'vue';
-import { TabsItem } from '../../types/components/tabs.types';
-import { useDashboardStore } from '../../store/dashboard';
+import { TabsItem } from '../../types/components/tabs.types'
+import { useDashboardStore } from '../../store/dashboard'
+import DashboardFilter from './DashboardFilter.vue'
 
 const dashboardStore = useDashboardStore();
 const search = ref("");
+const filterComponent = ref<InstanceType<typeof DashboardFilter>>();
 const tabGroups = reactive<TabsItem[]>([{
     id: 1,
     tittle: "Dashboard",
@@ -21,6 +23,10 @@ const tabGroups = reactive<TabsItem[]>([{
     tittle: "Talabalar",
     active: false
     }]);
+
+// open the filter modal
+
+const open = () => filterComponent.value?.open();
 
 const searching = async () => {
     dashboardStore.isLoading = true;
@@ -43,11 +49,12 @@ const searching = async () => {
                 </AppInput>
 
                 <!-- filters -->
-
-                <div class="w-[123px] h-10 flex items-center justify-center bg-[#EDF1FD] rounded-md cursor-pointer">
+                <div class="w-[123px] h-10 flex items-center justify-center bg-[#EDF1FD] rounded-md cursor-pointer" @click="open">
                     <img src="/assets/images/icons/filter.svg" alt="Filter Icon">
                     <p class="ml-3 text-sf-pro-text text-[#3365FC] text-sm font-medium leading-6">Filter</p>
                 </div>
+
+                <DashboardFilter ref="filterComponent" />
             </div>
 
         </div>
