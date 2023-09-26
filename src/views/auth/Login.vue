@@ -78,9 +78,9 @@ function submit() {
             <!-- captcha -->
 
             <!-- button -->
-            <AppButton type="submit" @click="submit">
+            <AppButton type="submit" @click="submit" class="flex items-center justify-center">
+                <span class="inline-block mr-1">Kirish</span>
                 <Loader width="22" height="22" v-if="isLoading" />
-                <span v-else>Kirish</span>
             </AppButton>
         </form>
     </section>

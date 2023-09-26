@@ -13,7 +13,11 @@ interface SponsorResponse {
 export const useDashboardStore = defineStore("dashboard", {
     state: () => {
         return {
-            currentTab: {} as TabsItem,
+            currentTab: {
+                id: 1,
+                tittle: "Dashboard",
+                active: true
+            } as TabsItem,
             count: 0,
             currentPage: 1,
             currentPageSize: 10,
