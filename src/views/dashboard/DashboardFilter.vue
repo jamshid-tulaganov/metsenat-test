@@ -2,8 +2,18 @@
 import CardSelection from '../../components/CardSelection.vue';
 import Modal from '../../components/Modal.vue';
 import { ref } from 'vue';
+import AppDropdown from '../../components/base/AppDropdown.vue';
 const show = ref(false);
 const date = ref("");
+const dropdown = ref("");
+
+const status = [
+    { id: 1, text: "Barchasi", value: "Barchasi" },
+    { id: 2, text: "Yangi", value: "Yangi" },
+    { id: 3, text: "Moderatsiyada", value: "Moderatsiyada" },
+    { id: 4, text: "Tasdiqlangan", value: "Tasdiqlangan" },
+    { id: 5, text: "Bekor qilingan", value: "Bekor qilingan" }
+]
 
 const close = () => show.value = false;
 const open = () => show.value = true;
@@ -19,9 +29,15 @@ defineExpose({
             <hr class="w-full h-[2px] bg-[#F5F5F7] my-7">
 
             <!-- app dropdown -->
+            <AppDropdown
+                v-model="dropdown"
+                :options="status"
+                label="Ariza holati"
+                placeholder="Select one"
+                class="mb-7"
+            ></AppDropdown>
 
             <!-- app card select -->
-
             <CardSelection class="mb-7" />
 
             <!-- app date -->

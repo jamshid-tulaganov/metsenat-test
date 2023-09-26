@@ -23,17 +23,21 @@ const change = (id: number) => {
 </script>
 
 <template>
-    <ul class="grid grid-cols-4 gap-3">
-        <li 
-            v-for="{ id, text, active } in cards" :key="id"
-            class="py-4 text-center text-[#2E384D] text-sm leading-5 font-semibold
-            border-[1px] border-blue-100 rounded-[5px] cursor-pointer relative"
-            :class="{'bg-blue-100': active}"
-            @click="change(id)"
-        >
-            {{ text }}
-            <span v-if="id !== 1" class="text-xs text-primary">UZS</span>
-            <img v-if="active" src="/assets/images/icons/checked.svg" alt="Checked Icon" class="absolute -right-1 -top-1">
-        </li>
-    </ul>
+    <div>
+        <h5 class="inline-block text-xs font-semibold tracking-[1.13px] leading-[14px] uppercase mb-2">Homiylik summasi</h5>
+        <ul class="grid grid-cols-4 gap-3">
+            <li 
+                v-for="{ id, text, active } in cards" :key="id"
+                class="py-4 text-center text-[#2E384D] text-sm leading-5 font-semibold
+                border-[1px] border-blue-100 rounded-[5px] cursor-pointer relative"
+                :class="{'bg-blue-100': active}"
+                @click="change(id)"
+            >
+                {{ text }}
+                <span v-if="id !== 1" class="text-xs text-primary">UZS</span>
+                <img v-if="active" src="/assets/images/icons/checked.svg" alt="Checked Icon" class="absolute -right-1 -top-1">
+            </li>
+        </ul>
+    </div>
+    
 </template>
