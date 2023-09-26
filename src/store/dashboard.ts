@@ -28,6 +28,13 @@ export const useDashboardStore = defineStore("dashboard", {
 
             this.count = response.data.count;
             this.sponsorsList = response.data.results;
+        },
+
+        async getSponsorByTerm(term: string) {
+            const response = await instance.get<SponsorResponse>(`/sponsor-list/?search=${term}`);
+
+            this.count = response.data.count;
+            this.sponsorsList = response.data.results;
         }
     }
 })
